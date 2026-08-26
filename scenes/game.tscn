@@ -1,0 +1,257 @@
+[gd_scene format=4 uid="uid://yicge48108e0"]
+
+[ext_resource type="Script" uid="uid://cm18bihqwljic" path="res://scenes/hud.gd" id="1_dinhu"]
+[ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="2_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://b30r3u15pdkd3" path="res://assets/sprites/coin.png" id="2_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://6e6w8fj5ltib" path="res://scenes/platform.tscn" id="2_lnu2h"]
+[ext_resource type="TileSet" uid="uid://dkfxa5vx1pdhd" path="res://tilesets/world_tileset.tres" id="3_kvpfn"]
+[ext_resource type="AudioStream" uid="uid://c1ncxjb5tjlof" path="res://assets/sounds/jump.wav" id="4_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://dhq0pa6na6p7k" path="res://scenes/killzone.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://dg4n7tp4d7q1y" path="res://scenes/slime.tscn" id="6_p57ef"]
+[ext_resource type="AudioStream" uid="uid://d3alktahalma0" path="res://assets/sounds/power_up.wav" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://cxnuchqy5dfcp" path="res://scenes/ferry.tscn" id="11_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://bshjg4q2yryy0" path="res://scenes/sign.tscn" id="12_dinhu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i64fm"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11l1o"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d14el"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ikuy"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnlwo"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jig8b"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmuha"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfxoj"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsmju"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0mny"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cc30"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rojmm"]
+atlas = ExtResource("2_kvpfn")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dinhu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i64fm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11l1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d14el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ikuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnlwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jig8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmuha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfxoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsmju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0mny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cc30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rojmm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bcc77"]
+
+[node name="Game" type="Node2D" unique_id=888406459]
+metadata/_edit_vertical_guides_ = [-311.0]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1088536885]
+script = ExtResource("1_dinhu")
+
+[node name="Label" type="Label" parent="HUD" unique_id=2061094699]
+offset_left = 53.0
+offset_top = 10.0
+offset_right = 127.0
+offset_bottom = 51.0
+theme_override_fonts/font = ExtResource("2_0tnpc")
+theme_override_font_sizes/font_size = 32
+text = "x0"
+autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="HUD" unique_id=1624956374]
+position = Vector2(30, 28)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_dinhu")
+autoplay = "default"
+
+[node name="killzone" parent="." unique_id=189174470 instance=ExtResource("5_iywne")]
+position = Vector2(341, 253)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone" unique_id=2063039774]
+position = Vector2(-89, -152)
+shape = SubResource("WorldBoundaryShape2D_bcc77")
+
+[node name="player" parent="." unique_id=570938729 instance=ExtResource("1_uwrxv")]
+unique_name_in_owner = true
+z_index = 5
+position = Vector2(80, 9)
+collision_layer = 2
+
+[node name="Camera2D" type="Camera2D" parent="player" unique_id=1869756566]
+position = Vector2(0, -8)
+zoom = Vector2(4, 4)
+limit_bottom = 80
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="jumpSound" type="AudioStreamPlayer2D" parent="player" unique_id=1488547786]
+stream = ExtResource("4_kvpfn")
+
+[node name="resetSound" type="AudioStreamPlayer2D" parent="." unique_id=1971204251]
+stream = ExtResource("10_vtaks")
+autoplay = true
+
+[node name="Puzzle 1" type="Node" parent="." unique_id=1926620270]
+
+[node name="Slimes" type="Node" parent="Puzzle 1" unique_id=477147221]
+
+[node name="slime1_1" parent="Puzzle 1/Slimes" unique_id=181868742 instance=ExtResource("6_p57ef")]
+position = Vector2(344, 52)
+
+[node name="slime1_2" parent="Puzzle 1/Slimes" unique_id=1954983558 instance=ExtResource("6_p57ef")]
+position = Vector2(408, 52)
+number = 2
+has_coin = true
+tells_truth = false
+
+[node name="Signs" type="Node" parent="Puzzle 1" unique_id=47953321]
+
+[node name="Sign" parent="Puzzle 1/Signs" unique_id=1037135205 instance=ExtResource("12_dinhu")]
+position = Vector2(167, 56)
+message = "You can trust no. 1"
+
+[node name="Sign3" parent="Puzzle 1/Signs" unique_id=1031331638 instance=ExtResource("12_dinhu")]
+position = Vector2(279, 40)
+message = "One of these slimes is hiding a coin."
+
+[node name="TileMap" type="Node" parent="Puzzle 1" unique_id=226075186]
+
+[node name="Mid" type="TileMapLayer" parent="Puzzle 1/TileMap" unique_id=358206717]
+z_index = -1
+use_parent_material = true
+position = Vector2(240, 0)
+tile_map_data = PackedByteArray("AAD3/wQAAAACAAEAAAD4/wQAAAACAAEAAAD5/wQAAAACAAEAAAD6/wQAAAACAAEAAAD7/wQAAAACAAEAAAD8/wQAAAACAAEAAAD9/wQAAAACAAEAAAD+/wQAAAACAAEAAAD//wQAAAACAAEAAAAAAAQAAAACAAEAAAABAAQAAAACAAEAAAACAAQAAAACAAEAAAADAAQAAAACAAEAAAAEAAQAAAACAAEAAAAFAAQAAAACAAEAAAAGAAQAAAACAAEAAAAHAAQAAAACAAEAAAAIAAQAAAACAAEAAAAMAAQAAAACAAEAAAAJAAQAAAACAAEAAAAKAAQAAAACAAEAAAALAAQAAAACAAEAAAD2/wQAAAACAAEAAAD1/wQAAAACAAEAAAD0/wQAAAACAAEAAAD3/wMAAAACAAEAAAD2/wMAAAACAAEAAAD2/wIAAAACAAEAAAD1/wIAAAACAAEAAAD1/wMAAAACAAEAAAD0/wMAAAACAAEAAAAAAAMAAAACAAEAAAABAAMAAAACAAEAAAACAAMAAAACAAEAAAADAAMAAAACAAEAAADz/wQAAAAHAAkAAADy/wQAAAAHAAkAAADx/wQAAAAHAAkAAADw/wQAAAAHAAkAAADv/wQAAAAHAAkAAADu/wQAAAAHAAkAAADt/wQAAAAHAAkAAADs/wQAAAAHAAkAAADs/wUAAAAGAAoAAADt/wUAAAAGAAoAAADu/wUAAAAGAAoAAADv/wUAAAAGAAoAAADw/wUAAAAGAAoAAADx/wUAAAAGAAoAAADy/wUAAAAGAAoAAADz/wUAAAAGAAoAAAD0/wUAAAAGAAoAAAD1/wUAAAAGAAoAAAD2/wUAAAAGAAoAAAD3/wUAAAAGAAoAAAD4/wUAAAAGAAoAAAD5/wUAAAAGAAoAAAD6/wUAAAAGAAoAAAD7/wUAAAAGAAoAAAD8/wUAAAAGAAoAAAD9/wUAAAAGAAoAAAD+/wUAAAAGAAoAAAD//wUAAAAGAAoAAAAAAAUAAAAGAAoAAAABAAUAAAAGAAoAAAACAAUAAAAGAAoAAAADAAUAAAAGAAoAAAAEAAUAAAAGAAoAAAAFAAUAAAAGAAoAAAAGAAUAAAAGAAoAAAAHAAUAAAAGAAoAAAAIAAUAAAAGAAoAAAAJAAUAAAAGAAoAAAAKAAUAAAAGAAoAAAALAAUAAAAGAAoAAAAMAAUAAAAGAAoAAAANAAUAAAAGAAoAAAAOAAUAAAAGAAoAAAAPAAUAAAAGAAoAAAAQAAUAAAAGAAoAAAARAAUAAAAGAAoAAAASAAUAAAAGAAoAAAATAAUAAAAGAAoAAAAUAAUAAAAGAAoAAAAVAAUAAAAGAAoAAAAWAAUAAAAGAAoAAAAXAAUAAAAGAAoAAAAYAAUAAAAGAAoAAAAZAAUAAAAGAAoAAAAaAAUAAAAGAAoAAAAbAAUAAAAGAAoAAAAcAAUAAAAGAAoAAAAdAAUAAAAGAAoAAAAeAAUAAAAGAAoAAAAfAAUAAAAGAAoAAAAgAAUAAAAGAAoAAAAhAAUAAAAGAAoAAAAiAAUAAAAGAAoAAADr/wUAAAAGAAoAAADr/wQAAAAHAAkAAAAjAAUAAAAGAAoAAAAkAAUAAAAGAAoAAAAlAAUAAAAGAAoAAAAmAAUAAAAGAAoAAAAnAAUAAAAGAAoAAAAoAAUAAAAGAAoAAAApAAUAAAAGAAoAAAAqAAUAAAAGAAoAAAArAAUAAAAGAAoAAAArAAQAAAAGAAoAAAAsAAQAAAAGAAoAAAAtAAQAAAAGAAoAAAAuAAQAAAAGAAoAAAAvAAQAAAAGAAoAAAAvAAUAAAAGAAoAAAAwAAUAAAAGAAoAAAAxAAUAAAAGAAoAAAAyAAUAAAAGAAoAAAAuAAUAAAAGAAoAAAAtAAUAAAAGAAoAAAAsAAUAAAAGAAoAAAAzAAUAAAAGAAoAAAA0AAUAAAAGAAoAAAA1AAUAAAAGAAoAAAA2AAUAAAAGAAoAAAA3AAUAAAAGAAoAAAA4AAUAAAAGAAoAAADq/wQAAAAHAAkAAADp/wQAAAAHAAkAAADo/wQAAAAHAAkAAADn/wQAAAAHAAkAAADm/wQAAAAHAAkAAADl/wQAAAAHAAkAAADk/wQAAAAHAAkAAADj/wQAAAAHAAkAAADi/wQAAAAHAAkAAADh/wQAAAAHAAkAAADg/wQAAAAHAAkAAADf/wQAAAAHAAkAAADe/wQAAAAHAAkAAADq/wUAAAAGAAoAAADp/wUAAAAGAAoAAADo/wUAAAAGAAoAAADn/wUAAAAGAAoAAADm/wUAAAAGAAoAAADl/wUAAAAGAAoAAADk/wUAAAAGAAoAAADj/wUAAAAGAAoAAADi/wUAAAAGAAoAAADh/wUAAAAGAAoAAADg/wUAAAAGAAoAAADf/wUAAAAGAAoAAADe/wUAAAAGAAoAAAA=")
+tile_set = ExtResource("3_kvpfn")
+
+[node name="Ferry" parent="." unique_id=976959378 instance=ExtResource("11_kvpfn")]
+position = Vector2(464, 48)
+
+[node name="Puzzle 2" type="Node" parent="." unique_id=1343018445]
+
+[node name="Slimes" type="Node" parent="Puzzle 2" unique_id=1847674117]
+
+[node name="slime1_1" parent="Puzzle 2/Slimes" unique_id=2039917659 instance=ExtResource("6_p57ef")]
+position = Vector2(1192, 52)
+dialogue = "Only one of us is lying"
+
+[node name="slime1_2" parent="Puzzle 2/Slimes" unique_id=1454321943 instance=ExtResource("6_p57ef")]
+position = Vector2(1240, 52)
+number = 2
+
+[node name="slime1_3" parent="Puzzle 2/Slimes" unique_id=1003872171 instance=ExtResource("6_p57ef")]
+position = Vector2(1288, 52)
+number = 3
+
+[node name="slime1_4" parent="Puzzle 2/Slimes" unique_id=243619264 instance=ExtResource("6_p57ef")]
+position = Vector2(1336, 52)
+number = 4
+
+[node name="slime1_5" parent="Puzzle 2/Slimes" unique_id=213753285 instance=ExtResource("6_p57ef")]
+position = Vector2(1384, 52)
+number = 5
+
+[node name="Signs" type="Node" parent="Puzzle 2" unique_id=1444501626]
+
+[node name="Sign" parent="Puzzle 2/Signs" unique_id=1863754546 instance=ExtResource("12_dinhu")]
+position = Vector2(1015, 56)
+message = "Trust no. 1"
+
+[node name="Sign2" parent="Puzzle 2/Signs" unique_id=2043401305 instance=ExtResource("12_dinhu")]
+position = Vector2(1048, -24)
+message = "Fun fact about slimes:
+Some slimes ALWAYS tells the truth. All others ALWAYS tell lies."
+
+[node name="Sign3" parent="Puzzle 2/Signs" unique_id=132927122 instance=ExtResource("12_dinhu")]
+position = Vector2(1127, 40)
+
+[node name="Sign4" parent="Puzzle 2/Signs" unique_id=1449936832 instance=ExtResource("12_dinhu")]
+position = Vector2(985, -24)
+
+[node name="Platforms" type="Node" parent="Puzzle 2" unique_id=1387731866]
+
+[node name="platform 1" parent="Puzzle 2/Platforms" unique_id=289936853 instance=ExtResource("2_lnu2h")]
+position = Vector2(1472, 5)
+
+[node name="platform 2" parent="Puzzle 2/Platforms" unique_id=1891855714 instance=ExtResource("2_lnu2h")]
+position = Vector2(1472, -27)
+
+[node name="platform 3" parent="Puzzle 2/Platforms" unique_id=1076378571 instance=ExtResource("2_lnu2h")]
+position = Vector2(1472, -59)
+
+[node name="platform 4" parent="Puzzle 2/Platforms" unique_id=2034273465 instance=ExtResource("2_lnu2h")]
+position = Vector2(1408, -75)
+
+[node name="TileMap" type="Node" parent="Puzzle 2" unique_id=1164568032]
+
+[node name="Mid" type="TileMapLayer" parent="Puzzle 2/TileMap" unique_id=2124262146]
+z_index = -1
+use_parent_material = true
+position = Vector2(1088, 0)
+tile_map_data = PackedByteArray("AAD3/wQAAAACAAEAAAD4/wQAAAACAAEAAAD5/wQAAAACAAEAAAD6/wQAAAACAAEAAAD7/wQAAAACAAEAAAD8/wQAAAACAAEAAAD9/wQAAAACAAEAAAD+/wQAAAACAAEAAAD//wQAAAACAAEAAAAAAAQAAAACAAEAAAABAAQAAAACAAEAAAACAAQAAAACAAEAAAADAAQAAAACAAEAAAAEAAQAAAACAAEAAAAFAAQAAAACAAEAAAAGAAQAAAACAAEAAAAHAAQAAAACAAEAAAAIAAQAAAACAAEAAAAVAAQAAAACAAEAAAAWAAQAAAACAAEAAAAXAAQAAAACAAEAAAAYAAQAAAACAAEAAAAZAAQAAAACAAEAAAAaAAQAAAACAAEAAAAMAAQAAAACAAEAAAANAAQAAAACAAEAAAAJAAQAAAACAAEAAAAKAAQAAAACAAEAAAALAAQAAAACAAEAAAAOAAQAAAACAAEAAAAPAAQAAAACAAEAAAAQAAQAAAACAAEAAAARAAQAAAACAAEAAAASAAQAAAACAAEAAAATAAQAAAACAAEAAAAUAAQAAAACAAEAAAD2/wQAAAACAAEAAAD1/wQAAAACAAEAAAD0/wQAAAACAAEAAAAbAAQAAAACAAEAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAHAPv/AAAAAAAAAAALAPv/AAAAAAAAAAAMAPv/AAAAAAAAAAANAPv/AAAAAAAAAAAOAPv/AAAAAAAAAAAPAPv/AAAAAAAAAAALAPz/AAAAAAEAAAAMAPz/AAAAAAEAAAANAPz/AAAAAAEAAAAOAPz/AAAAAAEAAAAPAPz/AAAAAAEAAAACAPz/AAAAAAEAAAADAPz/AAAAAAEAAAAEAPz/AAAAAAEAAAAFAPz/AAAAAAEAAAAGAPz/AAAAAAEAAAAHAPz/AAAAAAEAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD9/wAAAAAAAAEAAAD+/wAAAAAAAAEAAAAbAAMAAAACAAEAAAAaAAMAAAACAAEAAAAZAAMAAAACAAEAAAAZAAIAAAACAAEAAAAYAAIAAAACAAEAAAAXAAIAAAACAAEAAAAXAAMAAAACAAEAAAAYAAMAAAACAAEAAAAWAAMAAAACAAEAAAAVAAMAAAACAAEAAAD3/wMAAAACAAEAAAD2/wMAAAACAAEAAAD2/wIAAAACAAEAAAD1/wIAAAACAAEAAAD1/wMAAAACAAEAAAD0/wMAAAACAAEAAAAAAAMAAAACAAEAAAABAAMAAAACAAEAAAACAAMAAAACAAEAAAADAAMAAAACAAEAAADz/wQAAAAHAAkAAADy/wQAAAAHAAkAAADx/wQAAAAHAAkAAADw/wQAAAAHAAkAAADv/wQAAAAHAAkAAADu/wQAAAAHAAkAAADt/wQAAAAHAAkAAADs/wQAAAAHAAkAAADs/wUAAAAGAAoAAADt/wUAAAAGAAoAAADu/wUAAAAGAAoAAADv/wUAAAAGAAoAAADw/wUAAAAGAAoAAADx/wUAAAAGAAoAAADy/wUAAAAGAAoAAADz/wUAAAAGAAoAAAD0/wUAAAAGAAoAAAD1/wUAAAAGAAoAAAD2/wUAAAAGAAoAAAD3/wUAAAAGAAoAAAD4/wUAAAAGAAoAAAD5/wUAAAAGAAoAAAD6/wUAAAAGAAoAAAD7/wUAAAAGAAoAAAD8/wUAAAAGAAoAAAD9/wUAAAAGAAoAAAD+/wUAAAAGAAoAAAD//wUAAAAGAAoAAAAAAAUAAAAGAAoAAAABAAUAAAAGAAoAAAACAAUAAAAGAAoAAAADAAUAAAAGAAoAAAAEAAUAAAAGAAoAAAAFAAUAAAAGAAoAAAAGAAUAAAAGAAoAAAAHAAUAAAAGAAoAAAAIAAUAAAAGAAoAAAAJAAUAAAAGAAoAAAAKAAUAAAAGAAoAAAALAAUAAAAGAAoAAAAMAAUAAAAGAAoAAAANAAUAAAAGAAoAAAAOAAUAAAAGAAoAAAAPAAUAAAAGAAoAAAAQAAUAAAAGAAoAAAARAAUAAAAGAAoAAAASAAUAAAAGAAoAAAATAAUAAAAGAAoAAAAUAAUAAAAGAAoAAAAVAAUAAAAGAAoAAAAWAAUAAAAGAAoAAAAXAAUAAAAGAAoAAAAYAAUAAAAGAAoAAAAZAAUAAAAGAAoAAAAaAAUAAAAGAAoAAAAbAAUAAAAGAAoAAAAcAAUAAAAGAAoAAAAdAAUAAAAGAAoAAAAeAAUAAAAGAAoAAAAfAAUAAAAGAAoAAAAgAAUAAAAGAAoAAAAhAAUAAAAGAAoAAAAiAAUAAAAGAAoAAADr/wUAAAAGAAoAAADr/wQAAAAHAAkAAAAjAAUAAAAGAAoAAAAkAAUAAAAGAAoAAAAlAAUAAAAGAAoAAAAmAAUAAAAGAAoAAAAnAAUAAAAGAAoAAAAoAAUAAAAGAAoAAAApAAUAAAAGAAoAAAAqAAUAAAAGAAoAAAArAAUAAAAGAAoAAAArAAQAAAAGAAoAAAAsAAQAAAAGAAoAAAAtAAQAAAAGAAoAAAAuAAQAAAAGAAoAAAAvAAQAAAAGAAoAAAAvAAUAAAAGAAoAAAAwAAUAAAAGAAoAAAAxAAUAAAAGAAoAAAAyAAUAAAAGAAoAAAAuAAUAAAAGAAoAAAAtAAUAAAAGAAoAAAAsAAUAAAAGAAoAAAAzAAUAAAAGAAoAAAA0AAUAAAAGAAoAAAA1AAUAAAAGAAoAAAA2AAUAAAAGAAoAAAA3AAUAAAAGAAoAAAA4AAUAAAAGAAoAAAA=")
+tile_set = ExtResource("3_kvpfn")

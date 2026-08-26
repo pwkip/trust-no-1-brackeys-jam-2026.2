@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://n6g1btorm0hg"]
+
+[ext_resource type="Script" uid="uid://cmclmqdwaaeii" path="res://scenes/coinslot.gd" id="1_pvw20"]
+[ext_resource type="Texture2D" uid="uid://ckwm7iqr41hap" path="res://assets/sprites/world_tileset.png" id="2_ln1ii"]
+[ext_resource type="FontFile" uid="uid://njydc2e50off" path="res://assets/fonts/PixelOperator8.ttf" id="3_h72em"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcc77"]
+size = Vector2(30, 22)
+
+[node name="CoinSlot" type="Area2D" unique_id=1037135205]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_pvw20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1823984499]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_bcc77")
+
+[node name="Text" type="Label" parent="." unique_id=1632457749]
+visible = false
+offset_left = -73.0
+offset_top = -126.0
+offset_right = 73.0
+offset_bottom = -13.0
+theme_override_fonts/font = ExtResource("3_h72em")
+theme_override_font_sizes/font_size = 8
+text = "Insert coin
+press x"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="SpriteNoCoin" type="Sprite2D" parent="." unique_id=959998336]
+texture = ExtResource("2_ln1ii")
+region_enabled = true
+region_rect = Rect2(48, 48, 16, 16)
+
+[node name="SpriteCoin" type="Sprite2D" parent="." unique_id=1139334161]
+visible = false
+texture = ExtResource("2_ln1ii")
+region_enabled = true
+region_rect = Rect2(64, 48, 16, 16)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
