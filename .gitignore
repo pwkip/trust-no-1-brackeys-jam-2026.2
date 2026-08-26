@@ -1,5 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# ignore build artifacts
 .DS_Store
 New Game Project.*
+build/
