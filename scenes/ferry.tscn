@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://cxnuchqy5dfcp"]
 
+[ext_resource type="Script" uid="uid://b63qo75feqa4b" path="res://scenes/ferry.gd" id="1_c5u44"]
 [ext_resource type="PackedScene" uid="uid://6e6w8fj5ltib" path="res://scenes/platform.tscn" id="1_nuu73"]
 [ext_resource type="TileSet" uid="uid://dkfxa5vx1pdhd" path="res://tilesets/world_tileset.tres" id="2_4jtct"]
 [ext_resource type="PackedScene" uid="uid://n6g1btorm0hg" path="res://scenes/coinslot.tscn" id="4_c5u44"]
@@ -22,7 +23,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_lbhrr"]
 resource_name = "move"
 length = 2.0
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,14 +42,24 @@ _data = {
 &"move": SubResource("Animation_lbhrr")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcc77"]
+size = Vector2(14, 7)
+
 [node name="Ferry" type="Node2D" unique_id=976959378]
+script = ExtResource("1_c5u44")
 
 [node name="platform" parent="." unique_id=527010317 instance=ExtResource("1_nuu73")]
 position = Vector2(64, 5)
 
 [node name="animationplayer" type="AnimationPlayer" parent="platform" unique_id=1940320149]
 libraries/ = SubResource("AnimationLibrary_4jtct")
-autoplay = &"move"
+
+[node name="InsideFerry" type="Area2D" parent="platform" unique_id=805888011]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform/InsideFerry" unique_id=886367332]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_bcc77")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1868991674]
 tile_map_data = PackedByteArray("AAD//wAAAAACAAEAAAAAAAAAAAACAAEAAAABAAAAAAACAAEAAAACAAAAAAACAAEAAAADAAAAAAAHAAkAAAAEAAAAAAAHAAkAAAAFAAAAAAAHAAkAAAAGAAAAAAAHAAkAAAAHAAAAAAAHAAkAAAAIAAAAAAAHAAkAAAAJAAAAAAAHAAkAAAAKAAAAAAAHAAkAAAALAAAAAAAHAAkAAAAMAAAAAAAHAAkAAAANAAAAAAAHAAkAAAANAAEAAAAGAAoAAAAOAAEAAAAGAAoAAAAPAAEAAAAGAAoAAAAPAAAAAAAHAAkAAAAQAAAAAAAHAAkAAAAOAAAAAAAHAAkAAAARAAAAAAAHAAkAAAASAAAAAAAHAAkAAAATAAAAAAAHAAkAAAAUAAAAAAAHAAkAAAAVAAAAAAAHAAkAAAAWAAAAAAAHAAkAAAAXAAAAAAACAAEAAAAYAAAAAAACAAEAAAAZAAAAAAACAAEAAAAaAAAAAAACAAEAAAD//wEAAAACAAEAAAAAAAEAAAACAAEAAAABAAEAAAACAAEAAAACAAEAAAACAAEAAAADAAEAAAAGAAoAAAAEAAEAAAAGAAoAAAAFAAEAAAAGAAoAAAAGAAEAAAAGAAoAAAAHAAEAAAAGAAoAAAAIAAEAAAAGAAoAAAAJAAEAAAAGAAoAAAAKAAEAAAAGAAoAAAALAAEAAAAGAAoAAAAMAAEAAAAGAAoAAAAQAAEAAAAGAAoAAAARAAEAAAAGAAoAAAASAAEAAAAGAAoAAAATAAEAAAAGAAoAAAAUAAEAAAAGAAoAAAAVAAEAAAAGAAoAAAAWAAEAAAAGAAoAAAAXAAEAAAACAAEAAAAYAAEAAAACAAEAAAAZAAEAAAACAAEAAAAaAAEAAAACAAEAAAA=")
@@ -57,3 +67,5 @@ tile_set = ExtResource("2_4jtct")
 
 [node name="CoinSlot" parent="." unique_id=113218733 instance=ExtResource("4_c5u44")]
 position = Vector2(24, -8)
+
+[connection signal="body_entered" from="platform/InsideFerry" to="." method="_on_inside_ferry_body_entered"]

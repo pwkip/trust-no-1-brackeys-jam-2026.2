@@ -1,18 +1,12 @@
 extends Node2D
 
 @export var number = 1
-@export var dialogue = ""
+@export var statement = ""
 @export var has_coin = false
-@export var tells_truth = true
 
 func _ready() -> void:
-	var statement = "I have the coin."
-	if tells_truth && !has_coin || !tells_truth && has_coin:
-		statement = "I don't have the coin."
-	if (dialogue):
-		statement += "\n"
-	$Statement.text = statement + dialogue
-	$Label.text = "Slime\nno. %d" % number
+	$Statement.text = statement
+	$Label.text = "Slime\nN°%d" % number
 	$Statement.visible = false
 	$Label.visible = true
 	

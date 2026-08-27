@@ -8,10 +8,18 @@ var isAttacking = false
 var isJumping = false
 var isDying = false
 
+var cameraLimitTween
+
 func _physics_process(delta: float) -> void:
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	if (isDying):
+		velocity.x = 0
+		move_and_slide()
+		return
 		
 	if ((Input.is_action_just_pressed("attack")&&is_on_floor()) || isAttacking):
 		isAttacking = true
@@ -69,3 +77,17 @@ func _on_attack_area_area_entered(area: Area2D) -> void:
 	var target = area if area.has_method("take_hit") else area.get_parent()
 	if (target.has_method("take_hit")):
 		target.take_hit()
+
+
+func _on_underground_body_entered(body: Node2D) -> void:
+	#$Camera2D.limit_bottom = 304
+	set_camera_limit(304, 0.6)
+		
+func _on_underground_treshhold_body_exited(body: Node2D) -> void:
+	set_camera_limit(80, 1.6)
+	
+func set_camera_limit(value: int, duration: float) -> void:
+	if cameraLimitTween:
+		cameraLimitTween.kill()
+	cameraLimitTween = create_tween()
+	cameraLimitTween.tween_property($Camera2D, "limit_bottom", value, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
