@@ -16,7 +16,7 @@ func take_hit():
 	if (GameManager.score == 0):
 		print('no coins')
 		return
-	GameManager.substract_point()
+	GameManager.subtract_point()
 	has_coin = true
 	$SpriteCoin.visible = true
 	$Text.visible = false

@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cwf1bm76xv78p" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://wddgu6jaiy0m" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="AudioStream" uid="uid://4dmtbkiktebn" path="res://assets/sounds/explosion.wav" id="3_dqkch"]
 [ext_resource type="AudioStream" uid="uid://ciwlimljkwkra" path="res://assets/sounds/hurt.wav" id="3_qhqgy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
@@ -19,6 +20,22 @@ region = Rect2(192, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
 atlas = ExtResource("1_3vyb7")
 region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(0, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(32, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(64, 192, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
+atlas = ExtResource("1_3vyb7")
+region = Rect2(96, 192, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yqjtg"]
 atlas = ExtResource("1_3vyb7")
@@ -133,7 +150,24 @@ animations = [{
 }],
 "loop": 0,
 "name": &"attack",
-"speed": 16.0
+"speed": 22.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31cv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf23h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt7fs")
+}],
+"loop": 0,
+"name": &"hit",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -240,8 +274,6 @@ position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_bcc77")
 animation = &"attack"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1488079075]
 position = Vector2(0, -5)
@@ -260,6 +292,9 @@ wait_time = 0.715
 one_shot = true
 
 [node name="deadSound" type="AudioStreamPlayer2D" parent="." unique_id=562767078]
+stream = ExtResource("3_dqkch")
+
+[node name="hitSound" type="AudioStreamPlayer2D" parent="." unique_id=1316095620]
 stream = ExtResource("3_qhqgy")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

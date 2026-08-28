@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -300.0
 var isAttacking = false
 var isJumping = false
 var isDying = false
+var isHit = false
 
 var cameraLimitTween
 
@@ -20,6 +21,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = 0
 		move_and_slide()
 		return
+	if (isHit):
+		move_and_slide()
+		return
+		
 		
 	if ((Input.is_action_just_pressed("attack")&&is_on_floor()) || isAttacking):
 		isAttacking = true
@@ -91,3 +96,11 @@ func set_camera_limit(value: int, duration: float) -> void:
 		cameraLimitTween.kill()
 	cameraLimitTween = create_tween()
 	cameraLimitTween.tween_property($Camera2D, "limit_bottom", value, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+func take_hit():
+	isHit = true
+	$AnimatedSprite2D.play("hit")
+	await $AnimatedSprite2D.animation_finished
+	$hitSound.play()
+	GameManager.subtract_heart()
+	isHit = false
