@@ -18,4 +18,13 @@ func _on_hearts_changed(new_hearts: int):
 		if heart.visible:
 			heart.visible = false
 			break
-	
+			
+func collect_coin(startPosition :Vector2):
+	var coin = $AnimatedSprite2D.duplicate()
+	add_child(coin)
+	coin.position = startPosition
+	var t = create_tween()
+	t.set_parallel(true)
+	t.tween_property(coin,"position", $AnimatedSprite2D.position, 0.5)
+	await t.finished
+	coin.queue_free()

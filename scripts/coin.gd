@@ -2,7 +2,6 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("im a coin")
 	pass # Replace with function body.
 
 
@@ -16,7 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 	GameManager.add_point()
 	$coinsound.play()
 	$AnimatedSprite2D.visible = false
-
+	$"../../../../HUD".collect_coin(get_global_transform_with_canvas().origin)
 
 func _on_coinsound_finished() -> void:
 	queue_free()

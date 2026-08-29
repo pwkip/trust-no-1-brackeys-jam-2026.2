@@ -31,6 +31,8 @@ func _physics_process(delta: float) -> void:
 		$AttackArea.position.x = -5 if $AnimatedSprite2D.flip_h else 5
 		$AnimatedSprite2D.play("attack")
 		$AttackArea.set_deferred("monitoring", true)
+		print(get_global_transform_with_canvas())
+		
 		return
 
 	# Handle jump.
